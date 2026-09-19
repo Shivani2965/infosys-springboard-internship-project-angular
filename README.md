@@ -154,16 +154,7 @@ http://localhost:4200
 ```
 
 > Never commit `.env` or expose Stripe secret keys publicly.
-
-## ⚠️ Challenges
-
-* Managing authentication state across Angular components using LocalStorage and RxJS
-* Protecting booking routes using Angular route guards
-* Maintaining booking state throughout multiple pages
-* Implementing dynamic pricing based on traveler details
-* Integrating the Angular frontend with an Express payment backend
-* Keeping Stripe secret credentials securely on the server
-* Implementing responsive navigation and destination filtering
+> 
 
 ## 💾 Data Storage
 
@@ -181,8 +172,4 @@ For production, the application could be extended with a persistent database and
 * Expanded destination and package management
 * Production deployment
 
-## 👩‍💻 Author
 
-**Shivani Devanekar**
-
-Built as an **Infosys Springboard Angular project**.
