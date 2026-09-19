@@ -17,7 +17,7 @@ export interface CheckoutResponse {
 })
 export class PaymentService {
 
-  private apiUrl = 'http://localhost:4242';
+  private apiUrl = 'https://wanderly-laov.onrender.com';
 
   constructor(private http: HttpClient) {}
 
