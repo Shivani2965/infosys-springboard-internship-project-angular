@@ -1,387 +1,188 @@
 # 🌍 Wanderly — Tourism Information & Online Booking System
 
-Wanderly is a responsive tourism and online booking web application built with Angular. It allows users to explore destinations, view detailed travel information, select packages, complete a booking flow, and proceed to payment and booking confirmation.
+Wanderly is a responsive tourism and online booking web application built with **Angular**. It enables users to explore destinations, view travel packages, complete a booking flow, and proceed to Stripe payment and booking confirmation.
 
-The project focuses on building a complete travel-booking experience using Angular, TypeScript, Express.js, browser-based LocalStorage, and Stripe integration.
+## 🎯 Problem Statement
 
----
-# 🛠️ Tech Stack
+Travelers often need to browse destinations, compare packages, view location information, and complete bookings through a single platform. Wanderly provides a simple end-to-end tourism experience that combines destination discovery, authentication, booking, maps, and payment.
 
-## Frontend
+## 🛠️ Tech Stack
 
-* **Angular**
-* **TypeScript**
-* **HTML5**
-* **CSS3**
-* **Angular Router**
-* **RxJS**
+**Frontend**
 
-## Backend
+* Angular
+* TypeScript
+* HTML5 & CSS3
+* Angular Router
+* RxJS
 
-* **Node.js**
-* **Express.js**
-* **CORS**
-* **dotenv**
+**Backend**
 
-## Payment
+* Node.js
+* Express.js
+* CORS
+* dotenv
 
-* **Stripe**
+**Integrations & Storage**
 
-## Data Storage
+* Stripe
+* Google Maps
+* Browser LocalStorage
 
-* **Browser LocalStorage**
-* Local/static application data
+**Tools**
 
-## Integrations
+* Angular CLI
+* npm
+* Git & GitHub
 
-* **Google Maps**
+## ✨ Key Features
 
-## Development Tools
-
-* **Angular CLI**
-* **npm**
-* **Git**
-* **GitHub**
-
----
-
-# ✨ Features
-
-## 🏠 Home Page
-
-* Responsive landing page
-* Navigation to different sections
-* Featured travel destinations
-* Travel-focused call-to-action sections
-
-## 🌎 Destinations
-
-* Browse available destinations
-* Destination cards
-* Destination filtering
-* Debounced filtering/search interaction
+* Responsive tourism landing page
+* Destination browsing and filtering
+* Debounced search/filter interaction
 * Load-more functionality
-* Navigation to destination details
+* Destination details with packages, pricing, duration, and places to visit
+* Google Maps destination integration
+* Client-side user registration and login
+* Protected booking routes using Angular route guards
+* Dynamic booking amount calculation
+* Stripe payment workflow
+* Booking confirmation flow
+* LocalStorage-based session and application state
+* Responsive navigation with mobile hamburger menu
 
-## 📍 Destination Details
+## 🏗️ Implementation
 
-Users can view:
+The application follows a component-based Angular architecture with dedicated services for authentication, destinations, and payments.
 
-* Destination information
-* Travel package details
-* Number of days
-* Places/spots to visit
-* Package pricing
-* Destination location
-* Google Maps integration
-* Booking option
-
-## 🔐 Authentication
-
-* User registration
-* User login
-* Logout
-* Login-state management
-* Protected booking routes
-* Authentication state maintained using LocalStorage
-
-> Authentication is currently implemented on the client side for this project and does not use Firebase Authentication or a remote authentication service.
-
-## 📝 Booking
-
-Users can enter:
-
-* Name
-* Email
-* Phone number
-* Travel date
-* Number of adults
-* Number of children
-
-The booking amount is calculated dynamically based on the selected package and number of travelers.
-
-## 💳 Payment
-
-Wanderly includes a payment workflow supported by a Node.js/Express backend and Stripe.
-
-The backend is responsible for handling payment-related requests so that sensitive Stripe credentials are not exposed directly in the Angular frontend.
-
-> Payment functionality depends on the Stripe configuration provided through environment variables.
-
-## 📋 Booking Information
-
-Booking-related information is maintained locally in the browser for the current implementation.
-
-LocalStorage is used to persist relevant application state across page refreshes.
-
-
-## 📱 Responsive Design
-
-The application is designed to work across:
-
-* Desktop
-* Tablet
-* Mobile
-
-The navigation includes a responsive hamburger menu for smaller screens.
-
----
-
-# 📂 Project Structure
+The booking flow is:
 
 ```text
-wanderly/
-│
+Destination
+    ↓
+Destination Details
+    ↓
+Authentication
+    ↓
+Booking Form
+    ↓
+Payment
+    ↓
+Booking Confirmation
+```
+
+The Angular frontend communicates with the **Express.js backend** for payment-related requests. Stripe secret credentials are kept on the server using environment variables.
+
+## 📁 Project Structure
+
+```text
+Wanderly/
 ├── src/
-│   ├── app/
-│   │   │
-│   │   ├── core/
-│   │   │   ├── guards/
-│   │   │   │   └── auth-guard.ts
-│   │   │   │
-│   │   │   └── services/
-│   │   │       ├── auth.ts
-│   │   │       ├── destination.ts
-│   │   │       ├── payment.ts
-│   │   │       └── ...
-│   │   │
-│   │   ├── pages/
-│   │   │   ├── home/
-│   │   │   ├── destinations/
-│   │   │   ├── booking/
-│   │   │   ├── bookings/
-│   │   │   ├── payment/
-│   │   │   ├── payment-success/
-│   │   │   └── contact/
-│   │   │
-│   │   └── shared/
-│   │       └── navbar/
-│   │
-│   ├── assets/
-│   └── ...
+│   └── app/
+│       ├── core/
+│       │   ├── guards/
+│       │   └── services/
+│       ├── pages/
+│       │   ├── home/
+│       │   ├── destinations/
+│       │   ├── booking/
+│       │   ├── bookings/
+│       │   ├── payment/
+│       │   └── payment-success/
+│       └── shared/
+│           └── navbar/
 │
 ├── backend/
 │   ├── server.js
 │   ├── package.json
-│   ├── package-lock.json
 │   └── .env
 │
 ├── angular.json
 ├── package.json
-├── package-lock.json
 ├── tsconfig.json
-├── .gitignore
 └── README.md
 ```
 
-> `.env` should remain local and must not be committed to GitHub.
+## 🚀 Getting Started
 
----
-
-# 🔄 Application Architecture
-
-```text
-                    ┌─────────────────────┐
-                    │   Angular Frontend  │
-                    │                     │
-                    │ Components          │
-                    │ Services            │
-                    │ Routing             │
-                    │ Route Guards        │
-                    └──────────┬──────────┘
-                               │
-                     HTTP Requests
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │  Express Backend   │
-                    │                     │
-                    │ Node.js             │
-                    │ Express.js          │
-                    │ CORS                │
-                    │ dotenv              │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                         ┌──────────┐
-                         │  Stripe  │
-                         └──────────┘
-
-
-        Local application data
-                 │
-                 ▼
-        ┌──────────────────┐
-        │ Browser          │
-        │ LocalStorage     │
-        └──────────────────┘
-```
-
----
-
-# 🚀 Getting Started
-
-## Prerequisites
-
-Make sure the following are installed:
+### Prerequisites
 
 * Node.js
 * npm
 * Angular CLI
 * Git
 
-Check your versions:
-
-```bash
-node -v
-npm -v
-ng version
-git --version
-```
-
----
-
-# 📥 Installation
-
-## 1. Clone the Repository
+### Installation
 
 ```bash
 git clone https://github.com/Shivani2965/Wanderly.git
-```
-
-## 2. Navigate to the Project
-
-```bash
 cd Wanderly
-```
-
-## 3. Install Frontend Dependencies
-
-```bash
 npm install
 ```
 
----
-
-# ⚙️ Backend Setup
-
-Open a terminal in the project directory and navigate to the backend:
+### Backend Setup
 
 ```bash
 cd backend
-```
-
-Install the backend dependencies:
-
-```bash
 npm install
 ```
 
-The backend uses:
-
-* Express
-* CORS
-* dotenv
-* Stripe
-
----
-
-# 🔐 Environment Configuration
-
-Create a `.env` file inside the `backend` directory.
-
-Add the environment variables required by the backend, including the Stripe configuration used by `server.js`.
-
-Example:
+Create a `.env` file inside `backend/`:
 
 ```env
 STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
 
-> Never commit your actual Stripe secret key or other sensitive credentials to GitHub.
-
-The `.env` file is excluded using `.gitignore`.
-
----
-
-# ▶️ Running the Application
-
-## Start the Backend
-
-From the `backend` directory:
+### Run Backend
 
 ```bash
 npm start
 ```
 
-The command runs:
+### Run Frontend
 
-```text
-node server.js
-```
-
-## Start the Angular Frontend
-
-Open a second terminal.
-
-From the project root:
+Open a new terminal in the project root:
 
 ```bash
 ng serve
 ```
 
-The Angular application will normally be available at:
+Application:
 
 ```text
 http://localhost:4200
 ```
 
----
+> Never commit `.env` or expose Stripe secret keys publicly.
 
-# 💾 Data Storage
+## ⚠️ Challenges
 
-The current version of Wanderly does not use a traditional database such as MongoDB, MySQL, or Firebase Firestore.
+* Managing authentication state across Angular components using LocalStorage and RxJS
+* Protecting booking routes using Angular route guards
+* Maintaining booking state throughout multiple pages
+* Implementing dynamic pricing based on traveler details
+* Integrating the Angular frontend with an Express payment backend
+* Keeping Stripe secret credentials securely on the server
+* Implementing responsive navigation and destination filtering
 
-Application data is handled using local/static data and browser LocalStorage.
+## 💾 Data Storage
 
-LocalStorage is currently used for information such as:
+The current version uses **LocalStorage and local/static application data** instead of a traditional database.
 
-```text
-wanderly_user
-wanderly_logged_in
-```
+For production, the application could be extended with a persistent database and server-side authentication.
 
-This approach allows the application to demonstrate authentication and booking functionality without requiring a persistent database server.
+## 🔮 Future Improvements
 
-> For a production application, a secure backend database would be required instead of relying on browser LocalStorage for persistent application data.
-
----
-
-# 🗺️ Google Maps Integration
-
-Google Maps is integrated into the destination experience to provide location information for travel destinations.
-
-This allows users to understand the geographical location of the destination they are viewing.
-
----
-
-# 🔮 Future Improvements
-
-Potential improvements for future versions include:
-
-* Persistent backend database
+* MongoDB or other persistent database
 * Secure server-side authentication
-* User accounts
 * Admin dashboard
 * Persistent booking history
-* More destinations and travel packages
-* Advanced search and filtering
-* User reviews and ratings
 * Email booking confirmations
-* Production-ready payment handling
-* Improved Google Maps features
-* Cloud-based image storage
+* Expanded destination and package management
 * Production deployment
 
----
+## 👩‍💻 Author
 
+**Shivani Devanekar**
+
+Built as an **Infosys Springboard Angular project**.
