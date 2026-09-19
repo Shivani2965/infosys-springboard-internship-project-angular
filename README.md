@@ -2,6 +2,10 @@
 
 Wanderly is a responsive tourism and online booking web application built with **Angular**. It enables users to explore destinations, view travel packages, complete a booking flow, and proceed to Stripe payment and booking confirmation.
 
+## 🌐 Live Demo
+
+🔗 **[Wanderly — Live Application](https://wanderly-frontend-84r3.onrender.com/)**
+
 ## 🎯 Problem Statement
 
 Travelers often need to browse destinations, compare packages, view location information, and complete bookings through a single platform. Wanderly provides a simple end-to-end tourism experience that combines destination discovery, authentication, booking, maps, and payment.
