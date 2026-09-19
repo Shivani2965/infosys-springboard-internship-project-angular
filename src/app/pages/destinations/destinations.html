@@ -1,0 +1,340 @@
+<section class="destinations-page">
+
+  <!-- Header -->
+  <section class="explore-header">
+
+    <div class="container">
+
+      <div class="header-content">
+
+        <span class="eyebrow">
+          WANDER • DISCOVER • ESCAPE
+        </span>
+
+        <h1>
+          Find your next
+          <span>beautiful escape.</span>
+        </h1>
+
+        <p>
+          Explore handpicked destinations across India
+          and discover a journey worth remembering.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Filters -->
+  <section class="filter-section">
+
+    <div class="container">
+
+      <div class="filter-card">
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+          <i class="bi bi-search"></i>
+
+          <input
+            type="text"
+            placeholder="Search destinations, places..."
+            [(ngModel)]="searchTerm"
+            (input)="applyFilters()"
+          >
+
+        </div>
+
+
+        <!-- Category -->
+
+        <div class="filter-item">
+
+          <label>Category</label>
+
+          <select
+            [(ngModel)]="selectedCategory"
+            (change)="applyFilters()"
+          >
+
+            <option
+              *ngFor="let category of categories"
+              [value]="category"
+            >
+              {{ category }}
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Location -->
+
+        <div class="filter-item">
+
+          <label>Location</label>
+
+          <select
+            [(ngModel)]="selectedLocation"
+            (change)="applyFilters()"
+          >
+
+            <option
+              *ngFor="let location of locations"
+              [value]="location"
+            >
+              {{ location }}
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Sort -->
+
+        <div class="filter-item">
+
+          <label>Sort by</label>
+
+          <select
+            [(ngModel)]="selectedSort"
+            (change)="applyFilters()"
+          >
+
+            <option value="default">
+              Recommended
+            </option>
+
+            <option value="price-low">
+              Price: Low to High
+            </option>
+
+            <option value="price-high">
+              Price: High to Low
+            </option>
+
+            <option value="rating">
+              Highest Rated
+            </option>
+
+            <option value="popularity">
+              Most Popular
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="reset-btn"
+          (click)="resetFilters()"
+        >
+          Reset
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Results -->
+
+  <section class="results-section">
+
+    <div class="container">
+
+      <div class="results-header">
+
+        <div>
+
+          <span class="eyebrow">
+            EXPLORE INDIA
+          </span>
+
+          <h2>
+            Places you'll love
+          </h2>
+
+        </div>
+
+        <span class="result-count">
+          {{ filteredDestinations.length }} destinations
+        </span>
+
+      </div>
+
+
+      <!-- Cards -->
+
+      <div
+        class="destination-grid"
+        *ngIf="visibleDestinations.length > 0"
+      >
+
+        <article
+          class="destination-card"
+          *ngFor="let destination of visibleDestinations"
+        >
+
+          <div class="image-wrapper">
+
+            <img
+              [src]="destination.image"
+              [alt]="destination.name"
+            >
+
+            <span class="category-badge">
+              {{ destination.category }}
+            </span>
+
+            <span class="rating-badge">
+              <i class="bi bi-star-fill"></i>
+              {{ destination.rating }}
+            </span>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <div class="location">
+
+              <i class="bi bi-geo-alt-fill"></i>
+
+              {{ destination.location }},
+              {{ destination.state }}
+
+            </div>
+
+
+            <h3>
+              {{ destination.name }}
+            </h3>
+
+
+            <p>
+              {{ destination.description }}
+            </p>
+
+
+            <div class="card-info">
+
+              <span>
+                <i class="bi bi-people"></i>
+                {{ destination.travelers }}
+              </span>
+
+              <span>
+                <i class="bi bi-calendar3"></i>
+                {{ destination.duration }}
+              </span>
+
+            </div>
+
+
+            <div class="card-footer">
+
+              <div class="price">
+
+                <small>Starting from</small>
+
+                <strong>
+                  ₹{{ destination.price | number }}
+                </strong>
+
+              </div>
+
+
+              <div class="card-actions">
+
+                <a
+                  [routerLink]="['/destinations', destination.id]"
+                  class="details-btn"
+                >
+                  View Details
+                </a>
+
+                <a
+                  [routerLink]="['/booking']"
+                  [queryParams]="{ destination: destination.id }"
+                  class="book-btn"
+                >
+                  Book
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <!-- Empty State -->
+
+      <div
+        class="empty-state"
+        *ngIf="visibleDestinations.length === 0"
+      >
+
+        <i class="bi bi-compass"></i>
+
+        <h3>No destinations found</h3>
+
+        <p>
+          Try changing your search or filters.
+        </p>
+
+        <button
+          class="reset-btn"
+          (click)="resetFilters()"
+        >
+          Clear filters
+        </button>
+
+      </div>
+
+
+      <!-- Loading / End -->
+
+      <div
+        class="load-more"
+        *ngIf="visibleCount < filteredDestinations.length"
+      >
+
+        <div class="loading-dot"></div>
+
+        <span>
+          Scroll to discover more
+        </span>
+
+      </div>
+
+      <div
+        class="end-message"
+        *ngIf="
+          visibleDestinations.length > 0 &&
+          visibleCount >= filteredDestinations.length
+        "
+      >
+        You've reached the end ✨
+      </div>
+
+    </div>
+
+  </section>
+
+</section>

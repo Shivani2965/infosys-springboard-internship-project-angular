@@ -1,0 +1,134 @@
+<div class="bookings-page">
+
+  <section class="bookings-header">
+
+    <div class="container">
+
+      <p class="eyebrow">YOUR JOURNEYS</p>
+
+      <h1>My Bookings</h1>
+
+      <p>
+        Keep track of all your Wanderly adventures.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="bookings-section">
+
+    <div class="container">
+
+      <!-- EMPTY -->
+      <div
+        *ngIf="bookings.length === 0"
+        class="empty-state"
+      >
+
+        <div class="empty-icon">
+          <i class="bi bi-suitcase"></i>
+        </div>
+
+        <h2>No bookings yet</h2>
+
+        <p>
+          Your next adventure is waiting for you.
+        </p>
+
+        <a
+          routerLink="/destinations"
+          class="explore-btn"
+        >
+          Explore destinations
+        </a>
+
+      </div>
+
+
+      <!-- BOOKINGS -->
+      <div
+        *ngFor="let booking of bookings"
+        class="booking-item"
+      >
+
+        <img
+          [src]="booking.destination.image"
+          [alt]="booking.destination.name"
+        >
+
+        <div class="booking-info">
+
+          <div class="booking-top">
+
+            <div>
+
+              <span class="category">
+                {{ booking.destination.category }}
+              </span>
+
+              <h2>
+                {{ booking.destination.name }}
+              </h2>
+
+              <p>
+                <i class="bi bi-geo-alt"></i>
+                {{ booking.destination.location }},
+                {{ booking.destination.state }}
+              </p>
+
+            </div>
+
+            <span class="status">
+              <i class="bi bi-check-circle-fill"></i>
+              {{ booking.status }}
+            </span>
+
+          </div>
+
+
+          <div class="booking-details">
+
+            <div>
+              <span>Travel date</span>
+              <strong>
+                {{ booking.passenger.travelDate }}
+              </strong>
+            </div>
+
+            <div>
+              <span>Travelers</span>
+              <strong>
+                {{ booking.passenger.adults }}
+                Adults,
+                {{ booking.passenger.children }}
+                Children
+              </strong>
+            </div>
+
+            <div>
+              <span>Amount paid</span>
+              <strong>
+                ₹{{ booking.totalAmount | number }}
+              </strong>
+            </div>
+
+            <div>
+              <span>Booking ID</span>
+              <strong>
+                #{{ booking.id }}
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

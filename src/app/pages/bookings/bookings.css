@@ -1,0 +1,168 @@
+.bookings-page {
+  min-height: 100vh;
+  background: #f8f6f1;
+}
+
+.bookings-header {
+  background: #173f35;
+  color: white;
+  padding: 55px 0;
+}
+
+.eyebrow {
+  color: #f5c96a;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.bookings-header h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.bookings-header p:last-child {
+  color: #c9d8d3;
+  margin: 0;
+}
+
+.bookings-section {
+  padding: 50px 0 80px;
+}
+
+.booking-item {
+  background: white;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 18px;
+  display: flex;
+  gap: 22px;
+  box-shadow: 0 8px 25px rgba(23, 63, 53, 0.06);
+}
+
+.booking-item > img {
+  width: 210px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.booking-info {
+  flex: 1;
+}
+
+.booking-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.category {
+  color: #a27a19;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.booking-top h2 {
+  color: #173f35;
+  font-size: 23px;
+  margin: 5px 0;
+}
+
+.booking-top p {
+  color: #718079;
+  font-size: 12px;
+}
+
+.status {
+  align-self: flex-start;
+  background: #e7f6ed;
+  color: #176b3a;
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.booking-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 22px;
+  padding-top: 17px;
+  border-top: 1px solid #eeeae2;
+}
+
+.booking-details span {
+  display: block;
+  color: #89948f;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.booking-details strong {
+  color: #173f35;
+  font-size: 12px;
+}
+
+.empty-state {
+  text-align: center;
+  background: white;
+  border-radius: 22px;
+  padding: 70px 20px;
+}
+
+.empty-icon {
+  width: 65px;
+  height: 65px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #f5c96a;
+  color: #173f35;
+  font-size: 26px;
+}
+
+.empty-state h2 {
+  color: #173f35;
+}
+
+.empty-state p {
+  color: #718079;
+}
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #173f35;
+  color: white;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+
+  .booking-item {
+    flex-direction: column;
+  }
+
+  .booking-item > img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .booking-top {
+    flex-direction: column;
+  }
+
+  .booking-details {
+    grid-template-columns: 1fr 1fr;
+  }
+}

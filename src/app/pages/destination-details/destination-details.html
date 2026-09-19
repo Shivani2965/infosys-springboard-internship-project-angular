@@ -1,0 +1,187 @@
+<div class="details-page" *ngIf="destination">
+  <!-- HERO -->
+
+  <section class="details-hero">
+    <img [src]="destination.image" [alt]="destination.name" />
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <a routerLink="/destinations" class="back-link">
+        <i class="bi bi-arrow-left"></i>
+        Back to destinations
+      </a>
+
+      <div class="hero-info">
+        <span class="category">
+          {{ destination.category }}
+        </span>
+
+        <h1>
+          {{ destination.name }}
+        </h1>
+
+        <p>
+          <i class="bi bi-geo-alt-fill"></i>
+          {{ destination.location }},
+          {{ destination.state }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+
+  <section class="details-content">
+    <div class="container">
+      <div class="row g-5">
+        <!-- LEFT -->
+
+        <div class="col-lg-8">
+          <div class="intro">
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+
+              {{ destination.rating }}
+
+              <span> • {{ destination.travelers }} </span>
+            </div>
+
+            <h2>About {{ destination.name }}</h2>
+
+            <p>
+              {{ destination.description }}
+            </p>
+          </div>
+
+          <!-- PACKAGE -->
+
+          <div class="section-block">
+            <span class="eyebrow"> YOUR JOURNEY </span>
+
+            <h2>What's included</h2>
+
+            <div class="package-grid">
+              <div class="package-item" *ngFor="let item of destination.packageDetails">
+                <i class="bi bi-check-circle-fill"></i>
+
+                <span>
+                  {{ item }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOTEL -->
+
+          <div class="section-block">
+            <span class="eyebrow"> STAY WITH US </span>
+
+            <h2>Your accommodation</h2>
+
+            <div class="hotel-card">
+              <img [src]="destination.hotel.image" [alt]="destination.hotel.name" />
+
+              <div class="hotel-info">
+                <span class="hotel-label"> Recommended stay </span>
+
+                <h3>
+                  {{ destination.hotel.name }}
+                </h3>
+
+                <div class="hotel-rating">
+                  <i class="bi bi-star-fill"></i>
+
+                  {{ destination.hotel.rating }}
+                </div>
+
+                <div class="hotel-price">
+                  <strong> ₹{{ destination.hotel.pricePerNight | number }} </strong>
+
+                  <span> / night </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MAP -->
+
+          <div class="section-block">
+            <span class="eyebrow"> WHERE YOU'LL BE </span>
+
+            <h2>Location</h2>
+
+            <div class="map-container">
+              <iframe *ngIf="mapUrl" [src]="mapUrl" loading="lazy" allowfullscreen> </iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT BOOKING CARD -->
+
+        <div class="col-lg-4">
+          <div class="booking-card">
+            <span class="booking-label"> START YOUR JOURNEY </span>
+
+            <h3>
+              {{ destination.name }}
+            </h3>
+
+            <div class="booking-price">
+              <small> Package starting from </small>
+
+              <strong> ₹{{ destination.price | number }} </strong>
+
+              <span> / person </span>
+            </div>
+
+            <div class="booking-divider"></div>
+
+            <div class="booking-detail">
+              <i class="bi bi-calendar3"></i>
+
+              <span>
+                {{ destination.duration }}
+              </span>
+            </div>
+
+            <div class="booking-detail">
+              <i class="bi bi-people"></i>
+
+              <span>
+                {{ destination.travelers }}
+              </span>
+            </div>
+
+            <a
+              routerLink="/booking"
+              [queryParams]="{
+                destination: destination.id,
+              }"
+              class="book-now"
+            >
+              Book this trip
+
+              <i class="bi bi-arrow-right"></i>
+            </a>
+
+            <p class="secure-note">
+              <i class="bi bi-shield-check"></i>
+              Secure booking • Easy cancellation
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- DESTINATION NOT FOUND -->
+
+<div class="not-found" *ngIf="!destination">
+  <i class="bi bi-compass"></i>
+
+  <h2>Destination not found</h2>
+
+  <a routerLink="/destinations" class="book-now"> Explore destinations </a>
+</div>

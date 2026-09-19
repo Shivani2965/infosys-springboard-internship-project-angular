@@ -1,0 +1,293 @@
+<div class="contact-page">
+
+  <!-- HEADER -->
+  <section class="contact-header">
+
+    <div class="container">
+
+      <p class="eyebrow">
+        WE'D LOVE TO HEAR FROM YOU
+      </p>
+
+      <h1>
+        Let's talk about your next adventure.
+      </h1>
+
+      <p>
+        Have a question, suggestion, or just want to say hello?
+        Our team is here for you.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTENT -->
+  <section class="contact-section">
+
+    <div class="container">
+
+      <div class="row g-4">
+
+        <!-- CONTACT INFO -->
+        <div class="col-lg-5">
+
+          <div class="info-card">
+
+            <p class="section-label">
+              GET IN TOUCH
+            </p>
+
+            <h2>
+              We're here to help.
+            </h2>
+
+            <p class="intro">
+              Whether you're planning your first trip or your
+              tenth, reach out to us and we'll help make it
+              memorable.
+            </p>
+
+
+            <div class="contact-item">
+
+              <div class="contact-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+
+              <div>
+                <span>Our office</span>
+                <strong>
+                  Navi Mumbai, Maharashtra, India
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <div class="contact-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+
+              <div>
+                <span>Email us</span>
+                <strong>
+                  hello@wanderly.com
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <div class="contact-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+
+              <div>
+                <span>Call us</span>
+                <strong>
+                  +91 98765 43210
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <div class="contact-icon">
+                <i class="bi bi-clock"></i>
+              </div>
+
+              <div>
+                <span>Working hours</span>
+                <strong>
+                  Mon – Sat, 9:00 AM – 6:00 PM
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="social-section">
+
+              <span>Follow Wanderly</span>
+
+              <div class="social-links">
+
+                <a href="#" aria-label="Instagram">
+                  <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="Facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#" aria-label="Twitter">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+
+                <a href="#" aria-label="LinkedIn">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FEEDBACK FORM -->
+        <div class="col-lg-7">
+
+          <div class="form-card">
+
+            <div class="form-heading">
+
+              <div>
+                <p class="section-label">
+                  SEND A MESSAGE
+                </p>
+
+                <h2>
+                  How can we help?
+                </h2>
+              </div>
+
+              <i class="bi bi-chat-heart"></i>
+
+            </div>
+
+
+            <form
+              (ngSubmit)="submitFeedback()"
+            >
+
+              <div class="row">
+
+                <!-- NAME -->
+                <div class="col-md-6">
+
+                  <div class="form-group">
+
+                    <label>Your name</label>
+
+                    <input
+                      type="text"
+                      name="name"
+                      [(ngModel)]="feedback.name"
+                      placeholder="Enter your name"
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div class="col-md-6">
+
+                  <div class="form-group">
+
+                    <label>Email address</label>
+
+                    <input
+                      type="email"
+                      name="email"
+                      [(ngModel)]="feedback.email"
+                      placeholder="you@example.com"
+                    >
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- SUBJECT -->
+              <div class="form-group">
+
+                <label>Subject</label>
+
+                <select
+                  name="subject"
+                  [(ngModel)]="feedback.subject"
+                >
+
+                  <option value="">
+                    Select a subject
+                  </option>
+
+                  <option value="Booking">
+                    Booking enquiry
+                  </option>
+
+                  <option value="Destination">
+                    Destination question
+                  </option>
+
+                  <option value="Payment">
+                    Payment issue
+                  </option>
+
+                  <option value="Feedback">
+                    Feedback
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <!-- MESSAGE -->
+              <div class="form-group">
+
+                <label>Your message</label>
+
+                <textarea
+                  name="message"
+                  [(ngModel)]="feedback.message"
+                  rows="6"
+                  placeholder="Tell us how we can help..."
+                ></textarea>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="submit-btn"
+              >
+
+                Send message
+
+                <i class="bi bi-arrow-right"></i>
+
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

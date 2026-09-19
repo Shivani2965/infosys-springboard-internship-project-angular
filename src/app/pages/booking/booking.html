@@ -1,0 +1,196 @@
+<div class="booking-page">
+  <!-- Header -->
+  <section class="booking-header">
+    <div class="container">
+      <a routerLink="/destinations" class="back-link">
+        <i class="bi bi-arrow-left"></i>
+        Back to destinations
+      </a>
+
+      <p class="eyebrow">SECURE YOUR JOURNEY</p>
+
+      <h1>Complete your booking</h1>
+
+      <p>Tell us a little about your trip and we'll take care of the rest.</p>
+    </div>
+  </section>
+
+  <section class="booking-section">
+    <div class="container">
+      <div class="row g-4">
+        <!-- FORM -->
+        <div class="col-lg-7">
+          <div class="booking-card">
+            <div class="card-heading">
+              <div>
+                <span class="step-number">01</span>
+                <h2>Passenger details</h2>
+              </div>
+
+              <i class="bi bi-person-vcard"></i>
+            </div>
+
+            <form [formGroup]="bookingForm" (ngSubmit)="submitBooking()">
+              <!-- Name -->
+              <div class="form-group">
+                <label>Full name</label>
+
+                <input type="text" formControlName="name" placeholder="Enter your full name" />
+
+                <small *ngIf="f['name'].touched && f['name'].invalid"> Name is required. </small>
+              </div>
+
+              <div class="row">
+                <!-- Email -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Email address</label>
+
+                    <input type="email" formControlName="email" placeholder="you@example.com" />
+
+                    <small *ngIf="f['email'].touched && f['email'].invalid">
+                      Enter a valid email.
+                    </small>
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Phone number</label>
+
+                    <input
+                      type="tel"
+                      formControlName="phone"
+                      placeholder="10-digit mobile number"
+                    />
+
+                    <small *ngIf="f['phone'].touched && f['phone'].invalid">
+                      Enter a valid 10-digit number.
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Travel Date -->
+              <div class="form-group">
+                <label>Travel date</label>
+
+                <input type="date" formControlName="travelDate" [min]="minDate" />
+
+                <small *ngIf="f['travelDate'].touched && f['travelDate'].invalid">
+                  Please select your travel date.
+                </small>
+              </div>
+
+              <!-- Travelers -->
+              <div class="traveller-section">
+                <h3>Travelers</h3>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="counter-box">
+                      <div>
+                        <strong>Adults</strong>
+                        <span>12+ years</span>
+                      </div>
+
+                      <input type="number" min="1" formControlName="adults" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="counter-box">
+                      <div>
+                        <strong>Children</strong>
+                        <span>Below 12 years</span>
+                      </div>
+
+                      <input type="number" min="0" formControlName="children" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="continue-btn">
+                Continue to payment
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- TRIP SUMMARY -->
+        <div class="col-lg-5">
+          <div class="summary-card">
+            <div class="summary-image" [style.backgroundImage]="'url(' + destination?.image + ')'">
+              <span>
+                {{ destination?.category }}
+              </span>
+            </div>
+
+            <div class="summary-content">
+              <p class="summary-label">YOUR TRIP</p>
+
+              <h2>
+                {{ destination?.name }}
+              </h2>
+
+              <p class="location">
+                <i class="bi bi-geo-alt"></i>
+                {{ destination?.location }},
+                {{ destination?.state }}
+              </p>
+
+              <div class="summary-info">
+                <div>
+                  <i class="bi bi-calendar3"></i>
+                  <span>{{ destination?.duration }}</span>
+                </div>
+
+                <div>
+                  <i class="bi bi-star-fill"></i>
+                  <span>{{ destination?.rating }} rating</span>
+                </div>
+              </div>
+
+              <hr />
+
+              <div class="price-row">
+                <span>Adults</span>
+
+                <strong> ₹{{ destination?.price | number }} </strong>
+              </div>
+
+              <div class="price-row">
+                <span>Children</span>
+
+                <strong>
+                  ₹{{ (destination?.price || 0) * 0.5 | number }}
+                  <small>/ person</small>
+                </strong>
+              </div>
+
+              <hr />
+
+              <div class="total-row">
+                <span>Total</span>
+
+                <strong> ₹{{ totalAmount | number }} </strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="secure-note">
+            <i class="bi bi-shield-check"></i>
+
+            <div>
+              <strong>Safe & secure booking</strong>
+              <p>Your booking information is securely stored.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

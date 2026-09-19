@@ -1,0 +1,115 @@
+<div class="success-page">
+
+  <div class="success-card" *ngIf="booking">
+
+    <div class="success-icon">
+      <i class="bi bi-check-lg"></i>
+    </div>
+
+    <p class="eyebrow">
+      BOOKING CONFIRMED
+    </p>
+
+    <h1>
+      Your adventure is booked! 🎉
+    </h1>
+
+    <p class="subtitle">
+      Your payment was successful and your trip has been confirmed.
+    </p>
+
+    <div class="booking-reference">
+
+      <span>BOOKING ID</span>
+
+      <strong>
+        #{{ booking.id }}
+      </strong>
+
+    </div>
+
+
+    <div class="trip-summary">
+
+      <img
+        [src]="booking.destination.image"
+        [alt]="booking.destination.name"
+      >
+
+      <div>
+
+        <h2>
+          {{ booking.destination.name }}
+        </h2>
+
+        <p>
+          <i class="bi bi-geo-alt"></i>
+          {{ booking.destination.location }},
+          {{ booking.destination.state }}
+        </p>
+
+        <p>
+          <i class="bi bi-calendar3"></i>
+          {{ booking.passenger.travelDate }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="details">
+
+      <div>
+        <span>Traveler</span>
+        <strong>{{ booking.passenger.name }}</strong>
+      </div>
+
+      <div>
+        <span>Travelers</span>
+        <strong>
+          {{ booking.passenger.adults }} Adults,
+          {{ booking.passenger.children }} Children
+        </strong>
+      </div>
+
+      <div>
+        <span>Amount paid</span>
+        <strong>
+          ₹{{ booking.totalAmount | number }}
+        </strong>
+      </div>
+
+      <div>
+        <span>Status</span>
+        <strong class="confirmed">
+          <i class="bi bi-check-circle-fill"></i>
+          Confirmed
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="actions">
+
+      <a
+        routerLink="/destinations"
+        class="secondary-btn"
+      >
+        Explore more
+      </a>
+
+      <a
+        routerLink="/bookings"
+        class="primary-btn"
+      >
+        View my bookings
+        <i class="bi bi-arrow-right"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+</div>

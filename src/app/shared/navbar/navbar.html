@@ -1,0 +1,148 @@
+<nav class="wanderly-navbar">
+
+  <div class="container navbar-inner">
+
+    <!-- LOGO -->
+
+    <a
+      routerLink="/home"
+      class="brand"
+      (click)="closeMobileMenu()"
+    >
+
+      <span class="brand-icon">
+        W
+      </span>
+
+      <span>
+        Wanderly
+      </span>
+
+    </a>
+
+
+    <!-- HAMBURGER -->
+
+    <button
+      class="mobile-toggle"
+      type="button"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="mobileMenuOpen"
+    >
+
+      <i
+        class="bi"
+        [ngClass]="
+          mobileMenuOpen
+            ? 'bi-x-lg'
+            : 'bi-list'
+        "
+      ></i>
+
+    </button>
+
+
+    <!-- MENU -->
+
+    <div
+      class="navbar-menu"
+      [class.mobile-open]="mobileMenuOpen"
+    >
+
+      <div class="nav-links">
+
+        <a
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()"
+        >
+          Home
+        </a>
+
+        <a
+          routerLink="/destinations"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          Explore
+        </a>
+
+        <a
+          routerLink="/bookings"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          Bookings
+        </a>
+
+        <a
+          routerLink="/contact"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          Contact Us
+        </a>
+
+      </div>
+
+
+      <!-- AUTH -->
+
+      <div class="auth-links">
+
+        <!-- LOGGED OUT -->
+
+        <ng-container *ngIf="!isLoggedIn">
+
+          <a
+            routerLink="/login"
+            class="login-link"
+            (click)="closeMobileMenu()"
+          >
+            Login
+          </a>
+
+          <a
+            routerLink="/register"
+            class="signup-btn"
+            (click)="closeMobileMenu()"
+          >
+            Sign up
+          </a>
+
+        </ng-container>
+
+
+        <!-- LOGGED IN -->
+
+        <ng-container *ngIf="isLoggedIn">
+
+          <div class="user-pill">
+
+            <span class="user-avatar">
+              {{ userName.charAt(0).toUpperCase() }}
+            </span>
+
+            <span class="user-name">
+              {{ userName }}
+            </span>
+
+          </div>
+
+          <button
+            class="logout-btn"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+
+        </ng-container>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>

@@ -1,0 +1,208 @@
+<div class="payment-page">
+
+  <section class="payment-header">
+
+    <div class="container">
+
+      <a
+        routerLink="/booking"
+        class="back-link"
+      >
+        <i class="bi bi-arrow-left"></i>
+        Back to booking
+      </a>
+
+      <p class="eyebrow">
+        SECURE CHECKOUT
+      </p>
+
+      <h1>
+        Complete your payment
+      </h1>
+
+      <p>
+        You're one step away from your next adventure.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="payment-section">
+
+    <div class="container">
+
+      <div
+        *ngIf="cancelled"
+        class="cancelled-message"
+      >
+
+        <i class="bi bi-info-circle"></i>
+
+        <div>
+          <strong>Payment cancelled</strong>
+          <p>
+            No payment was made. You can try again whenever you're ready.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div
+        *ngIf="booking"
+        class="row g-4 justify-content-center"
+      >
+
+        <!-- PAYMENT -->
+        <div class="col-lg-6">
+
+          <div class="payment-card">
+
+            <div class="payment-icon">
+              <i class="bi bi-credit-card-2-front"></i>
+            </div>
+
+            <p class="eyebrow dark">
+              PAYMENT METHOD
+            </p>
+
+            <h2>
+              Pay securely with Stripe
+            </h2>
+
+            <p class="description">
+              You'll be redirected to Stripe's secure checkout
+              page to complete your payment.
+            </p>
+
+
+            <div class="stripe-info">
+
+              <div>
+                <i class="bi bi-shield-check"></i>
+
+                <span>
+                  Secure Stripe checkout
+                </span>
+              </div>
+
+              <div>
+                <i class="bi bi-credit-card"></i>
+
+                <span>
+                  Credit & debit cards
+                </span>
+              </div>
+
+              <div>
+                <i class="bi bi-lock"></i>
+
+                <span>
+                  Your payment details stay secure
+                </span>
+              </div>
+
+            </div>
+
+
+            <button
+              class="pay-btn"
+              (click)="payWithStripe()"
+              [disabled]="loading"
+            >
+
+              <span *ngIf="!loading">
+                Pay ₹{{ booking.totalAmount | number }}
+                <i class="bi bi-arrow-right"></i>
+              </span>
+
+              <span *ngIf="loading">
+                <i class="bi bi-arrow-repeat spin"></i>
+                Redirecting to Stripe...
+              </span>
+
+            </button>
+
+
+            <p class="test-mode">
+              <i class="bi bi-info-circle"></i>
+              Stripe Test Mode — no real money will be charged.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- ORDER SUMMARY -->
+        <div class="col-lg-4">
+
+          <div class="order-card">
+
+            <p class="summary-label">
+              YOUR BOOKING
+            </p>
+
+            <h2>
+              {{ booking.destination.name }}
+            </h2>
+
+            <p class="location">
+              <i class="bi bi-geo-alt"></i>
+              {{ booking.destination.location }},
+              {{ booking.destination.state }}
+            </p>
+
+
+            <div class="traveller-summary">
+
+              <div>
+                <span>Adults</span>
+                <strong>
+                  {{ booking.passenger.adults }}
+                </strong>
+              </div>
+
+              <div>
+                <span>Children</span>
+                <strong>
+                  {{ booking.passenger.children }}
+                </strong>
+              </div>
+
+              <div>
+                <span>Travel date</span>
+                <strong>
+                  {{ booking.passenger.travelDate }}
+                </strong>
+              </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="total-row">
+
+              <span>Total</span>
+
+              <strong>
+                ₹{{ booking.totalAmount | number }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

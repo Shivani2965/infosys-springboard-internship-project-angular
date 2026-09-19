@@ -1,0 +1,178 @@
+<div class="auth-page">
+
+  <div class="auth-container">
+
+    <!-- IMAGE -->
+
+    <div class="auth-image">
+
+      <div class="image-overlay">
+
+        <span>
+          WANDER • DISCOVER • ESCAPE
+        </span>
+
+        <h2>
+          Don't just dream about it.
+          Go there.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="auth-form">
+
+      <div class="brand-mark">
+        W
+      </div>
+
+      <span class="eyebrow">
+        START YOUR JOURNEY
+      </span>
+
+      <h1>
+        Create your account
+      </h1>
+
+      <p class="subtitle">
+        Join Wanderly and start planning your next adventure.
+      </p>
+
+
+      <form
+        (ngSubmit)="register()"
+      >
+
+        <!-- NAME -->
+
+        <div class="form-group">
+
+          <label>
+            Full name
+          </label>
+
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="name"
+            placeholder="Your full name"
+          >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label>
+            Email address
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="you@example.com"
+          >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+          <label>
+            Password
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Minimum 6 characters"
+          >
+
+        </div>
+
+
+        <!-- CONFIRM -->
+
+        <div class="form-group">
+
+          <label>
+            Confirm password
+          </label>
+
+          <input
+            type="password"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            placeholder="Re-enter your password"
+          >
+
+        </div>
+
+
+        <!-- ERROR -->
+
+        <div
+          class="error-message"
+          *ngIf="errorMessage"
+        >
+
+          <i class="bi bi-exclamation-circle"></i>
+
+          {{ errorMessage }}
+
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <button
+          type="submit"
+          class="auth-button"
+        >
+
+          Create account
+
+          <i class="bi bi-arrow-right"></i>
+
+        </button>
+
+      </form>
+
+
+      <p class="switch-auth">
+
+        Already have an account?
+
+        <a routerLink="/login">
+          Login
+        </a>
+
+      </p>
+
+
+      <a
+        routerLink="/home"
+        class="back-home"
+      >
+
+        <i class="bi bi-arrow-left"></i>
+
+        Back to home
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,125 @@
+<div class="auth-page">
+
+  <div class="auth-container">
+
+    <div class="auth-image">
+
+      <div class="image-overlay">
+
+        <span>
+          WANDER • DISCOVER • ESCAPE
+        </span>
+
+        <h2>
+          Your next adventure
+          starts here.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="auth-form">
+
+      <div class="brand-mark">
+        W
+      </div>
+
+      <span class="eyebrow">
+        WELCOME BACK
+      </span>
+
+      <h1>
+        Log in to Wanderly
+      </h1>
+
+      <p class="subtitle">
+        Continue planning your next beautiful escape.
+      </p>
+
+
+      <form
+        (ngSubmit)="login()"
+      >
+
+        <div class="form-group">
+
+          <label>
+            Email address
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="you@example.com"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Password
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Enter your password"
+          >
+
+        </div>
+
+
+        <div
+          class="error-message"
+          *ngIf="errorMessage"
+        >
+          <i class="bi bi-exclamation-circle"></i>
+
+          {{ errorMessage }}
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="auth-button"
+        >
+          Login
+
+          <i class="bi bi-arrow-right"></i>
+
+        </button>
+
+      </form>
+
+
+      <p class="switch-auth">
+
+        Don't have an account?
+
+        <a routerLink="/register">
+          Create one
+        </a>
+
+      </p>
+
+
+      <a
+        routerLink="/home"
+        class="back-home"
+      >
+        <i class="bi bi-arrow-left"></i>
+        Back to home
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
